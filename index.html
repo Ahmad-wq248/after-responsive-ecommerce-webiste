@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <style>
+      html,
+      body {
+        position: relative;
+        height: 100%;
+      }
+
+      body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+      }
+
+      .swiper {
+        width: 100%;
+        height: 100%;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style1.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--header start-->
+    <div class="bg-black max-w-[100%] h-16 xm:h-16 flex relative space-x-20">
+      <div
+        class="desktop:pt-5 desktop:pl-4 laptop:pt-5 laptop:pl-4 xm:pt-4 xm:pl-3 mm:pt-4 mm:pl-4 ml:pt-4 ml:pl-4 extra:pl-4 extra:pt-4 mobile:pl-4 mobile:pt-4 tablet:pl- tablet:pt-4"
+      >
+        <h3 class="font-serif text-white text-2xl">Shopify</h3>
+      </div>
+      <div
+        class="desktop:block laptop:block mt-5 xm:hidden mm:hidden ml:hidden extra:hidden mobile:hidden tablet:hidden"
+      >
+        <input
+          id="search"
+          onkeyup="searchfunction()"
+          class="desktop:w-72 desktop:h-8 laptop:w-80 laptop:h-8 rounded-md desktop:pl-3"
+          type="text"
+          placeholder="search something...."
+        />
+        <button class="bg-white text-black p-[4px] rounded-md font-serif">
+          Search
+        </button>
+      </div>
+
+      <button>
+        <a href="cart.html">
+          <i
+            class="fa-solid fa-cart-shopping desktop:ml-[600px] laptop:ml-[300px] text-white text-2xl xm:hidden mm:hidden ml:hidden extra:hidden mobile:hidden tablet:hidden desktop:block laptop:block"
+          ></i>
+        </a>
+      </button>
+
+      <div class="xm:mb-44 desktop:hidden laptop:hidden">
+        <button onclick="clickevent()">
+          <i
+            class="fa-solid fa-bars text-white right-0 absolute mr-7 desktop:hidden laptop:hidden"
+          ></i>
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="displaymenus"
+      class="overflow-y-auto overflow-hidden overflow-invisible bg-black fixed inset-0 z-[999] top-0 hidden"
+    >
+      <button onclick="clickevent()">
+        <i class="fa-solid fa-bars text-white pl-5 pt-4 text-2xl"></i>
+      </button>
+      <div class="ml-16 mt-10 p-3">
+        <input
+          id="search"
+          onkeyup="searchfunction()"
+          class="h-8 rounded-md font-serif pl-3"
+          type="text"
+          placeholder="search something..."
+        />
+      </div>
+      <div class="ml-36">
+        <button class="bg-white text-black h-8 rounded-md font-serif p-1">
+          Search
+        </button>
+      </div>
+      <div class="ml-40 mt-3">
+        <button>
+          <a href="cart.html">
+            <i class="fa-solid fa-cart-shopping text-2xl text-white"></i>
+          </a>
+        </button>
+      </div>
+    </div>
+
+    <!--header end-->
+    <!--hero section start-->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="pic1.jpg" alt="" /></div>
+        <div class="swiper-slide"><img src="pic2.jpg" alt="" /></div>
+        <div class="swiper-slide"><img src="pic3.jpg" alt="" /></div>
+        <div class="swiper-slide"><img src="pic4.jpg" alt="" /></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+    <!--hero section end-->
+    <h3 class="underline text-2xl font-serif text-center pt-12">
+      Filter by catagory
+    </h3>
+    <div class="text-center mt-11">
+      <button
+        class="rounded-md bg-white text-black hover:bg-black hover:text-white p-1 btn font-serif text-[15px] ml-4 mt-2"
+        data-filter="All"
+      >
+        All
+      </button>
+
+      <button
+        class="rounded-md bg-white text-black hover:bg-black hover:text-white p-1 btn font-serif text-[15px] ml-4 mt-2"
+        data-filter="Mobiles"
+      >
+        Mobiles
+      </button>
+
+      <button
+        class="rounded-md bg-white text-black hover:bg-black hover:text-white p-1 btn font-serif text-[15px] ml-4 mt-2"
+        data-filter="electronic"
+      >
+        electronic
+      </button>
+
+      <button
+        class="rounded-md bg-white text-black hover:bg-black hover:text-white p-1 btn font-serif text-[15px] ml-4 mt-2"
+        data-filter="Fashion"
+      >
+        Fashion
+      </button>
+
+      <button
+        class="rounded-md bg-white text-black hover:bg-black hover:text-white p-1 btn font-serif text-[15px] ml-4 mt-2"
+        data-filter="kids"
+      >
+        kids
+      </button>
+    </div>
+    <div>
+      <h3 class="font-serif text-2xl underline text-center mt-14">products</h3>
+      <div
+        class="desktop:space-y-20 laptop:space-y-20 mobile:grid-cols-1 mm:grid-cols-1 ml:grid-cols-1 extra:grid-cols-1 xm:space-y-10 mm:space-y-10 ml:space-y-10 extra:space-y-10 mobile:space-y-10 tablet:space-x-6 flex flex-wrap desktop:grid-cols-3 desktop:gap-20 desktop:mt-5 laptop:mt-5 laptop:gap-20 desktop:ml-14 laptop:ml-14 text-center justify-center align-middle"
+      >
+        <div
+          class="w-52 shadow-lg h-60 desktop:mt-20 laptop:mt-[85px] mobile:mt-10 extra:mt-10 ml:mt-10 mobile:space-x-5 tablet:mt-10 product Mobiles"
+          data-name="mobile infinix zero max"
+        >
+          <img src="mobile1.jpeg" class="h-36 w-52" alt="" />
+          <h3>infinix zero max</h3>
+          <h3>price:$200</h3>
+          <button
+            onclick="addtocart('infinix zero max','200','mobile1.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product Mobiles"
+          data-name="mobile  redmi 5"
+        >
+          <img src="mobile2.jpeg" class="h-36 w-52" alt="" />
+          <h3>redmi 5</h3>
+          <h3>price:$200</h3>
+          <button
+            onclick="addtocart('redmi 5','200','mobile2.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product Mobiles"
+          data-name="mobile realme"
+        >
+          <img src="mobile3.jpeg" class="h-36 w-52" alt="" />
+          <h3>realme</h3>
+          <h3>price:$200</h3>
+          <button
+            onclick="addtocart('realme','200','mobile3.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product Mobiles"
+          data-name="mobile techo spark 14"
+        >
+          <img src="mobile4.jpeg" class="h-36 w-52" alt="" />
+          <h3>techo spark 14</h3>
+          <h3>price:$200</h3>
+          <button
+            onclick="addtocart('techo spark 14','200','mobile4.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product Mobiles"
+          data-name="mobile techo spark 18"
+        >
+          <img src="mobile5.jpeg" class="h-36 w-52" alt="" />
+          <h3>techo spark 18</h3>
+          <h3>price:$200</h3>
+          <button
+            onclick="addtocart('techo spark 18','200','mobile5.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product Mobiles"
+          data-name="mobile redmi 7"
+        >
+          <img src="mobile6.jpeg" class="h-36 w-52" alt="" />
+          <h3>redmi 7</h3>
+          <h3>price:$200</h3>
+          <button
+            onclick="addtocart('redmi 7','200','mobile6.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product Fashion"
+          data-name="Fashion shirt for men"
+        >
+          <img src="n2.jpg " class="h-36 w-52" alt="" />
+          <h3>shirt for men</h3>
+          <h3>price:$20</h3>
+          <button
+            onclick="addtocart('shirt for men ','20','n2.jpg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product Fashion"
+          data-name="Fashion shirt for men"
+        >
+          <img src="n3.jpg" class="h-36 w-52" alt="" />
+          <h3>shirt for men M</h3>
+          <h3>price:$20</h3>
+          <button
+            onclick="addtocart('shirt for men M','20','n3.jpg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product Fashion"
+          data-name="Fashion shirt for men"
+        >
+          <img src="n4.jpg" class="h-36 w-52" alt="" />
+          <h3>shirt for men S</h3>
+          <h3>price:$20</h3>
+          <button
+            onclick="addtocart('shirt for men S','20','n4.jpg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product kids"
+          data-name="kids Education toy for kids "
+        >
+          <img src="education toy.jpeg" class="h-36 w-52" alt="" />
+          <h3>Education toy for kids</h3>
+          <h3>price:$20</h3>
+          <button
+            onclick="addtocart('Education toy for kids','20','education toy.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product Fashion"
+          data-name="fashion complete pair for women "
+        >
+          <img src="fashion girl.jpeg" class="h-36 w-52" alt="" />
+          <h3>complete pair for women</h3>
+          <h3>price:$50</h3>
+          <button
+            onclick="addtocart('complete pair for women','50','fashion girl.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product electronic"
+          data-name="electronic Fridge home appliance  "
+        >
+          <img src="fridge.jpeg" class="h-36 w-52" alt="" />
+          <h3>Fridge home appliance</h3>
+          <h3>price:$50</h3>
+          <button
+            onclick="addtocart('Fridge home appliance ','50','fridge.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product kids"
+          data-name="kids birthday gift for kids  "
+        >
+          <img src="gift pakage.jpeg" class="h-36 w-52" alt="" />
+          <h3>birthday gift for kids</h3>
+          <h3>price:$50</h3>
+          <button
+            onclick="addtocart('birthday gift for kids ','50','gift pakage.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product mobile"
+          data-name="mobile iphone 6 new condition  "
+        >
+          <img src="iphone 6.jpeg" class="h-36 w-52" alt="" />
+          <h3>iphone 6 new condition</h3>
+          <h3>price:$50</h3>
+          <button
+            onclick="addtocart(' iphone 6 new condition','50','iphone 6.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product electronic"
+          data-name="electronic iron for home use  "
+        >
+          <img src="iron.jpeg" class="h-36 w-52" alt="" />
+          <h3>iron for home use</h3>
+          <h3>price:$50</h3>
+          <button
+            onclick="addtocart('iron for home use','50','iron.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product electronic"
+          data-name="electronic kitchen items home appliance   "
+        >
+          <img src="kitchen items.jpeg" class="h-36 w-52" alt="" />
+          <h3>kitchen items home appliance</h3>
+          <h3>price:$50</h3>
+          <button
+            onclick="addtocart('kitchen items home appliance  ','50','kitchen items.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product electronic"
+          data-name="electronic oven home appliance   "
+        >
+          <img src="oven.jpeg" class="h-36 w-52" alt="" />
+          <h3>oven home appliance</h3>
+          <h3>price:$50</h3>
+          <button
+            onclick="addtocart(' oven home appliance ','50','oven.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product Fashion"
+          data-name="fashion clothes for men "
+        >
+          <img src="pair for men.jpeg" class="h-36 w-52" alt="" />
+          <h3>clothes for men</h3>
+          <h3>price:$50</h3>
+          <button
+            onclick="addtocart('clothes for men ','50','pair for men.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product kids"
+          data-name="kids plastic toy for kids (phone) "
+        >
+          <img src="plastic phone.jpeg" class="h-36 w-52" alt="" />
+          <h3>plastic toy for kids (phone)</h3>
+          <h3>price:$50</h3>
+          <button
+            onclick="addtocart('plastic toy for kids (phone) ','50','plastic phone.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product kids"
+          data-name="kids plastic toy for kids (train) "
+        >
+          <img src="plastic train.jpeg" class="h-36 w-52" alt="" />
+          <h3>plastic toy for kids (train)</h3>
+          <h3>price:$50</h3>
+          <button
+            onclick="addtocart('plastic toy for kids (train) ','50','plastic train.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product mobile"
+          data-name="mobile redmi 9c"
+        >
+          <img src="redmi 9c.jpeg" class="h-36 w-52" alt="" />
+          <h3>redmi 9c</h3>
+          <h3>price:$50</h3>
+          <button
+            onclick="addtocart('redmi 9c','50','redmi 9c.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product mobile"
+          data-name="mobile redmi note 12 pro"
+        >
+          <img src="redmi note 12 pro.jpeg" class="h-36 w-52" alt="" />
+          <h3>redmi note 12 pro</h3>
+          <h3>price:$50</h3>
+          <button
+            onclick="addtocart('redmi note 12 pro','50','redmi note 12 pro.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product kids"
+          data-name="kids camera for kids "
+        >
+          <img src="toy camera.jpeg" class="h-36 w-52" alt="" />
+          <h3>camera for kids</h3>
+          <h3>price:$50</h3>
+          <button
+            onclick="addtocart('camera for kids','50','toy camera.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product kids"
+          data-name="kids headphone for kids "
+        >
+          <img src="toy headphone.jpeg" class="h-36 w-52" alt="" />
+          <h3>headphone for kids</h3>
+          <h3>price:$50</h3>
+          <button
+            onclick="addtocart('camera for kids','50','toy headphone.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product mobile"
+          data-name="mobile vivo y14s "
+        >
+          <img src="vivo y30.jpeg" class="h-36 w-52" alt="" />
+          <h3>vivo y14s</h3>
+          <h3>price:$50</h3>
+          <button
+            onclick="addtocart('vivo y14s','50','vivo y30.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+        <div
+          class="w-52 shadow-lg h-60 product kids"
+          data-name="kids watch for kids "
+        >
+          <img src="watch.jpeg" class="h-36 w-52" alt="" />
+          <h3>watch for kids</h3>
+          <h3>price:$50</h3>
+          <button
+            onclick="addtocart('watch for kids','50','watch.jpeg')"
+            class="bg-black text-white p-1 font-serif mt-2 rounded-lg"
+          >
+            Add to cart
+          </button>
+          <h3 class="text-green-500">In Stock</h3>
+        </div>
+      </div>
+    </div>
+    <!--footer section start-->
+    <footer class="footer-section">
+      <div class="container">
+        <div class="footer-cta pt-5 pb-5">
+          <div class="row">
+            <div class="col-xl-4 col-md-4 mb-30">
+              <div class="single-cta">
+                <i class="fas fa-map-marker-alt"></i>
+                <div class="cta-text">
+                  <h4>Find us</h4>
+                  <span>1010 Avenue, sw 54321, london</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-md-4 mb-30">
+              <div class="single-cta">
+                <i class="fas fa-phone"></i>
+                <div class="cta-text">
+                  <h4>Call us</h4>
+                  <span>9876543210 0</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-md-4 mb-30">
+              <div class="single-cta">
+                <i class="far fa-envelope-open"></i>
+                <div class="cta-text">
+                  <h4>Mail us</h4>
+                  <span>mail@info.com</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-content pt-5 pb-5">
+          <div class="row">
+            <div class="col-xl-4 col-lg-4 mb-50">
+              <div class="footer-widget">
+                <div class="footer-logo">
+                  <a href="index.html"
+                    ><img
+                      src="https://i.ibb.co/QDy827D/ak-logo.png"
+                      class="img-fluid"
+                      alt="logo"
+                  /></a>
+                </div>
+                <div class="footer-text">
+                  <p>
+                    Lorem ipsum dolor sit amet, consec tetur adipisicing elit,
+                    sed do eiusmod tempor incididuntut consec tetur adipisicing
+                    elit,Lorem ipsum dolor sit amet.
+                  </p>
+                </div>
+                <div class="footer-social-icon">
+                  <span>Follow us</span>
+                  <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                  <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                  <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+              <div class="footer-widget">
+                <div class="footer-widget-heading">
+                  <h3>Useful Links</h3>
+                </div>
+                <ul>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">about</a></li>
+                  <li><a href="#">services</a></li>
+                  <li><a href="#">portfolio</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">About us</a></li>
+                  <li><a href="#">Our Services</a></li>
+                  <li><a href="#">Expert Team</a></li>
+                  <li><a href="#">Contact us</a></li>
+                  <li><a href="#">Latest News</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+              <div class="footer-widget">
+                <div class="footer-widget-heading">
+                  <h3>Subscribe</h3>
+                </div>
+                <div class="footer-text mb-25">
+                  <p>
+                    Don’t miss to subscribe to our new feeds, kindly fill the
+                    form below.
+                  </p>
+                </div>
+                <div class="subscribe-form">
+                  <form action="#">
+                    <input type="text" placeholder="Email Address" />
+                    <button><i class="fab fa-telegram-plane"></i></button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+              <div class="copyright-text">
+                <p>
+                  Copyright &copy; 2018, All Right Reserved
+                  <a href="https://codepen.io/anupkumar92/">Shopify</a>
+                </p>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+              <div class="footer-menu">
+                <ul>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Terms</a></li>
+                  <li><a href="#">Privacy</a></li>
+                  <li><a href="#">Policy</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!--footer section end-->
+    <script src="app.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+  </body>
+</html>

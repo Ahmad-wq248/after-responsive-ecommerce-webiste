@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: flex;
+        gap: 160px;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+      .image {
+        width: 100px;
+        border-radius: 5px;
+      }
+      .counter {
+        padding: 10px;
+        gap: 20px;
+      }
+      .price-setting {
+        margin-top: 500px;
+        padding: 20px;
+      }
+      @media (max-width: 600px) {
+        .container {
+          padding: 10px;
+          display: flex;
+          gap: 15px;
+        }
+        .remove-btn {
+          font-size: 8px;
+        }
+        .counter {
+          padding: 1px;
+          font-size: 12px;
+          gap: 4px;
+        }
+        .image {
+          width: 40px;
+        }
+      }
+      @media (min-width: 601px) and (max-width: 900px) {
+        .container {
+          padding: 10px;
+          display: flex;
+          gap: 45px;
+          margin-left: 60px;
+        }
+      }
+      @media (min-width: 900px) and (max-width: 1025px) {
+        .container {
+          padding: 10px;
+          display: flex;
+          gap: 90px;
+          margin-left: 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h3 class="text-center font-bold text-2xl">Your cart</h3>
+    <div id="cart-items"></div>
+    <div class="price-setting">
+      <a class="text-2xl">total price: <span id="total-price">$0</span></a>
+    </div>
+    <div class="flex">
+      <a href="index.html" class="bg-black text-white p-3">Continue Shopping</a>
+      <a href="cashout.html" class="bg-black text-white p-3">cashout</a>
+    </div>
+    <script>
+      function load() {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let displaycart = document.getElementById("cart-items");
+        let price = document.getElementById("total-price");
+        let price1 = 0;
+        displaycart.innerHTML = " ";
+        cart.forEach((element, index) => {
+          let creatediv = document.createElement("div");
+          creatediv.innerHTML = `
+           <div>
+          <div class="container xm:gap-10">
+            <img class="image" src="${element.img}">
+            <h3 class="text-[19px] font-serif ">${element.name}</h3>
+            <h3 class="text-[19px] font-serif ">$${element.price}</h3>
+            <div class="flex counter">
+              <button onclick="increment(${index})"  class="bg-black text-white h-2 p-1 rounded-md">+</button>
+              <span>${element.quantity}</span>
+              <button onclick=" decrement(${index}) "class="bg-black text-white h-2 p-1 rounded-md">-</button>
+           </div>
+           <button onclick="remove(${index})"  class="bg-black text-white h-2 p-1 rounded-md  remove-btn">remove</button>
+            </div>
+          </div>
+
+          
+          `;
+          displaycart.appendChild(creatediv);
+          price1 += element.price * element.quantity;
+        });
+        price.innerText = price1;
+      }
+      function remove(index) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        load();
+      }
+      function increment(index) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart[index].quantity += 1;
+        localStorage.setItem("cart", JSON.stringify(cart));
+        load();
+      }
+      function decrement(index) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        if (cart[index].quantity > 1) {
+          cart[index].quantity -= 1;
+        } else {
+          remove();
+          return;
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        load();
+      }
+      load();
+    </script>
+  </body>
+</html>
